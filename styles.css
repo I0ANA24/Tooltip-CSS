@@ -1,0 +1,76 @@
+body {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    box-sizing: border-box;
+    background-color: rgb(232, 125, 216);
+}
+
+
+.avatar {
+    width: 200px;
+    height: 200px;
+    background-image: url("Images/cat.jpeg");
+    background-size: cover;
+    background-position-x: 70%;
+    border-radius: 50%;
+    position: relative;
+    cursor: pointer;
+}
+
+.avatar::before,
+.avatar::after {
+    --scale: 0;
+    --arrow-size: 15px;
+    --tooltip-color: rgb(101, 10, 146);
+
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%) translateY(var(--translate-y, 0)) scale(var(--scale));
+    transition: 300ms transform;
+    transform-origin: bottom center;
+}
+
+.avatar::before {
+    --translate-y: calc(-100% - var(--arrow-size) * 2);
+
+    content: attr(data-tooltip);
+    color: white;
+    background-color: var(--tooltip-color);
+    width: max-content;
+    max-width: 100%;
+    padding: .5rem;
+    border-radius: .3rem;
+    text-align: center;
+    top: .3rem;
+}
+
+.avatar::after {
+    --translate-y: calc(-1 * var(--arrow-size));
+
+    content: '';
+    border: var(--arrow-size) solid transparent;
+    border-top-color: var(--tooltip-color);
+    transform-origin: top center;
+    top: -.8rem;
+}
+
+.avatar:hover::before,
+.avatar:hover::after {
+    --scale: 1.5;
+}
+
+/*.avatar:hover::after {
+    position: absolute;
+    width: 0;
+    height: 0px;
+    border-top: 10px solid red;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    content: '';
+    left: 50%;
+    transform: translateX(-50%);
+    top: -22px;
+} */
