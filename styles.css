@@ -17,7 +17,6 @@ body {
     background-position-x: 70%;
     border-radius: 50%;
     position: relative;
-    cursor: pointer;
 }
 
 .avatar::before,
